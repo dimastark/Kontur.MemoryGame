@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <main class="container">
         <slot/>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -23,6 +23,16 @@
         src: url(../assets/fonts/OpenSans-Semibold.ttf);
     }
 
+    @font-face {
+        font-family: Krungthep;
+        src: url(../assets/fonts/Krungthep.ttf);
+    }
+
+    html {
+        background: #227434 no-repeat center center fixed;
+        background-size: cover;
+    }
+
     html, body {
         width: 100%;
         height: 100%;
@@ -36,8 +46,6 @@
 
         width: 100%;
         height: 100%;
-
-        background: #227434;
 
         justify-content: center;
         align-items: center;

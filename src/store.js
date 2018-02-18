@@ -38,6 +38,18 @@ export default new Vuex.Store({
             }
         },
 
+        enableAll(state) {
+            for (let card of state.cards) {
+                card.disabled = false;
+            }
+        },
+
+        disableAll(state) {
+            for (let card of state.cards) {
+                card.disabled = true;
+            }
+        },
+
         guess(state, cardCode) {
             for (let card of state.cards) {
                 if (card.code === cardCode) {
@@ -53,6 +65,7 @@ export default new Vuex.Store({
             commit('openAll');
             await sleep(5000);
             commit('closeAll');
+            commit('enableAll');
         }
     }
 });

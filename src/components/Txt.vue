@@ -13,7 +13,7 @@
         margin: 0;
         padding: 0;
 
-        letter-spacing: 0;
+        letter-spacing: -.25px;
 
         opacity: .85;
         color: #fff;

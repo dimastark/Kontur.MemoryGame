@@ -1,38 +1,87 @@
 <template>
     <layout class="container">
-        <img class="image" src="../assets/images/start-game.png" alt="start game"/>
-        <txt class="header bold">memory game</txt>
-        <button-link to="/game">Начать игру</button-link>
+        <header>
+            <div class="restart-button" @click="newGame">
+                <txt class="semibold">Начать заново</txt>
+            </div>
+            <div class="score-text">
+                <txt>Очки: <span class="score">{{score}}</span></txt>
+            </div>
+        </header>
+        <main class="cards-container">
+            <card :key="card.id" v-for="card of cards" v-bind="card"></card>
+        </main>
     </layout>
 </template>
 
 <script>
-    import ButtonLink from './ButtonLink';
-    import Layout from './Layout';
+    import {mapState, mapActions} from 'vuex';
+
     import Txt from './Txt';
+    import Card from './Card';
+    import Layout from './Layout';
 
     export default {
         name: 'game-screen',
+        computed: mapState([
+            'score',
+            'cards'
+        ]),
+        methods: mapActions([
+            'newGame'
+        ]),
+        mounted() {
+            this.$nextTick(this.newGame);
+        },
         components: {
-            ButtonLink,
-            Layout,
-            Txt
+            Txt,
+            Card,
+            Layout
         }
     }
 </script>
 
 <style scoped>
-    .image {
-        max-width: 503px;
-        max-height: 262px;
+    header {
+        display: flex;
+
+        width: 100%;
+        max-width: 740px;
+        margin-bottom: 15px;
+
+        justify-content: space-between;
     }
 
-    .header {
-        font-size: 28px;
+    .restart-button {
+        font-size: 14px;
 
-        margin-top: 20px;
-        margin-bottom: 34px;
+        margin-left: 12px;
 
-        text-transform: uppercase;
+        cursor: pointer;
+
+        opacity: .8;
+        color: #fff;
+    }
+
+    .score-text {
+        font-size: 14px;
+
+        margin-right: 12px;
+
+        opacity: .8;
+    }
+
+    .score {
+        font-family: Krungthep, sans-serif;
+    }
+
+    .cards-container {
+        display: flex;
+
+        width: 100%;
+        max-width: 740px;
+
+        justify-content: center;
+        flex-wrap: wrap;
     }
 </style>
