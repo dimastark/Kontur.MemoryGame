@@ -1,8 +1,8 @@
 <template>
     <main :class="[className, {disabled, removed}]">
         <div class="flipper">
-            <div class="front" @click="flip(id)" :style="frontStyle"></div>
-            <div class="back" @click="flip(id)" :style="backStyle"></div>
+            <div class="front" @click="closed && open(id)" :style="frontStyle"></div>
+            <div class="back" @click="closed && open(id)" :style="backStyle"></div>
         </div>
     </main>
 </template>
@@ -21,7 +21,7 @@
             'removed'
         ],
         methods: {
-            ...mapActions(['flip'])
+            ...mapActions(['open'])
         },
         computed: {
             disabled() {
@@ -62,11 +62,15 @@
     }
 
     .removed {
-        visibility: hidden;
+        opacity: 0;
     }
 
     main {
+        opacity: 1;
+        
         perspective: 1000px;
+        
+        transition: opacity .5s ease .5s;
     }
 
     .flip-back .flipper {
