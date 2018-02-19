@@ -8,7 +8,6 @@ export default function () {
     return cards.map((code, index) => ({
         id: index,
         closed: true,
-        disabled: true,
         removed: false,
         code
     }));
