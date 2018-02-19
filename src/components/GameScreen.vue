@@ -17,9 +17,9 @@
 <script>
     import {mapState, mapActions} from 'vuex';
 
-    import Txt from './Txt';
     import Card from './Card';
     import Layout from './Layout';
+    import Txt from './Txt';
 
     export default {
         name: 'game-screen',
@@ -34,9 +34,9 @@
             this.$nextTick(this.newGame);
         },
         components: {
-            Txt,
             Card,
-            Layout
+            Layout,
+            Txt
         }
     }
 </script>
